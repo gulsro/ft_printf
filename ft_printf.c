@@ -6,7 +6,7 @@
 /*   By: gozturk <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 18:05:45 by gozturk       #+#    #+#                 */
-/*   Updated: 2022/11/10 18:34:20 by gozturk       ########   odam.nl         */
+/*   Updated: 2022/11/11 17:12:31 by gozturk       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 int    ft_putchar(char c)
 {
-    write(1, &c, 1);
+    return(write(1, &c, 1));
 }
-
+/*
 int 	ft_putnbr(int i)
 {
 	long int n;
@@ -28,9 +28,9 @@ int 	ft_putnbr(int i)
 	if (n < 0)
 	{
 		n = n * -1;
-		write(1, '-', 1);
+		write(1, "-", 1);
 	}
-}
+}*/
 static int	convert_format(int sp, va_list arg)
 {	
 	if (sp == 'c')
@@ -56,15 +56,15 @@ int	ft_printf(const char *fstr, ...)
 			value += convert_format(fstr[i], arg);
 		}
 		else if (fstr[i] != '%')
-			value += ft_putchar_fd(fstr[i]);
+			value += ft_putchar(fstr[i]);
 		i++;
 	}
 	va_end(arg);
-	return (value);
+	return (value); //because orginal f returns some shit
 }
 
 int main()
 {	
-	ft_printf("%c", 'm');
+	ft_printf("dfagg%c", 'm');
 //	printf("\n%c", 'm');
 }
