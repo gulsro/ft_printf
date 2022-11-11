@@ -15,26 +15,37 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-int    ft_putchar_fd(char c)
+int    ft_putchar(char c)
 {
     write(1, &c, 1);
-	return (1);
 }
 
+int 	ft_putnbr(int i)
+{
+	long int n;
+
+	n = i;
+	if (n < 0)
+	{
+		n = n * -1;
+		write(1, '-', 1);
+	}
+}
 static int	convert_format(int sp, va_list arg)
 {	
 	if (sp == 'c')
-			return(ft_putchar_fd(va_arg(arg, int)));
+			return(ft_putchar(va_arg(arg, int)));
 //	if (sp == '%')
 }
 
 int	ft_printf(const char *fstr, ...)
 {
 	va_list	arg;
-	int c;
+	int value;
 	int	i;
-	int	len;
-	
+//	int	len;
+
+	value = 0;	
 	i = 0;
 	va_start(arg, fstr);
 	while (fstr[i] != '\0')
@@ -42,22 +53,18 @@ int	ft_printf(const char *fstr, ...)
 		if (fstr[i] == '%')
 		{
 			i++;
-			c = convert_format(fstr[i], arg);
+			value += convert_format(fstr[i], arg);
 		}
 		else if (fstr[i] != '%')
-			c = ft_putchar_fd(fstr[i]);
+			value += ft_putchar_fd(fstr[i]);
+		i++;
 	}
 	va_end(arg);
-	return (c);
+	return (value);
 }
 
 int main()
 {	
-	int	i;
-
-	i = printf("hello");
-	printf("\n i = %d", i);	
-	//ft_printf("%c", 'm');
+	ft_printf("%c", 'm');
 //	printf("\n%c", 'm');
-//
 }
