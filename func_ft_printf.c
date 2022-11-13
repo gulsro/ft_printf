@@ -31,7 +31,7 @@ int     ft_putnbr(int i)
 
 int main()
 {
-	int i = -6543;
+	int i = 54;
 	printf("\n%d\n", ft_putnbr(i));
-	ft_putnbr(i);
+//	ft_putnbr(i);
 }
