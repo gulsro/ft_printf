@@ -6,7 +6,7 @@
 /*   By: gozturk <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 18:05:45 by gozturk       #+#    #+#                 */
-/*   Updated: 2022/11/11 17:12:31 by gozturk       ########   odam.nl         */
+/*   Updated: 2022/11/14 17:40:08 by gozturk       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,48 @@ int	ft_putstr(char *s)
 	return(write(1, s, len));
 }
 
+int ft_puthexupp(unsigned long i)
+{
+    int len;
+
+	len = 0;
+    if (i > 15)
+        len +=  ft_puthexupp(i / 16);
+    i = i % 16;
+    if (i < 10)
+        i += 48;
+    else
+        i += 'A' - 10;
+    return (len + write(1, &i, 1));
+}
+
+int ft_puthexlow(unsigned long i)
+{
+    int len;
+
+	len = 0;
+    if (i > 15)
+        len +=  ft_puthexlow(i / 16);
+    i = i % 16;
+    if (i < 10)
+        i += 48;
+    else
+        i += 'a' - 10;
+    return (len + write(1, &i, 1));
+}
+
+int ft_putunsigned(unsigned int i)
+{
+    int len;
+
+    len = 0;
+    if (i > 10)
+        len += ft_putunsigned(i / 10);
+    i = i % 10;
+    i += '0';
+    return (len + write(1, &i, 1));
+}
+
 static int	convert_format(int sp, va_list *arg) //NOT PASS BY VALUE :D:D
 {	
 	if (sp == 'c')
@@ -74,15 +116,15 @@ static int	convert_format(int sp, va_list *arg) //NOT PASS BY VALUE :D:D
 	if (sp == 's')
 			return(ft_putstr(va_arg(*arg, char*)));
 	if (sp == 'p')
-			return(0);
-        if (sp == 'u')
-                        return(0);
-        if (sp == 'x')
-                        return(0);
-        if (sp == 'X')
-                        return(0);
-        if (sp == '%')
-                        return(ft_putchar('%'));
+			return(write(1, "0x", 2) + ft_puthexupp(va_arg(*arg, unsigned long)));
+	if (sp == 'u')
+			return(ft_putunsigned(va_arg(*arg, unsigned)));
+	if (sp == 'x')
+			return(ft_puthexlow(va_arg(*arg, unsigned long)));
+	if (sp == 'X')
+			return(ft_puthexupp(va_arg(*arg, unsigned long)));
+	if (sp == '%')
+			return(ft_putchar('%'));
 
 
 }
@@ -113,8 +155,10 @@ int	ft_printf(const char *fstr, ...)
 
 int main()
 {	
-	int a = 54;
+	char a = 'c';
+	void *ptrc ;
+	ptrc = &a;
 //	ft_printf("dfagg_%c%c_gli_%c_%d", 'm', 'x', 't', a);
-	ft_printf("%s%%00", "gliler");
+	ft_printf("%sgulser%d%xivici%p", "gliler", 205, 139, ptrc);
 //	printf("\n%c", 'm');
 }

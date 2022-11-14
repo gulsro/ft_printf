@@ -49,7 +49,19 @@ int	ft_putstr_fd(char *s)
 	return (write(1, s, len));
 }
 
-int puthexa_low(int )
+int ft_puthexa_low(unsigned long i)
+{
+	int	len;
+
+	if (i > 15)
+		len +=	puthexa_low(i / 16);
+	i = i % 16;
+	if (i < 10)
+		i += 48;
+	else
+		i += 55;
+	return (len + write(1, &i, 1));			
+}
 int main()
 {
 	int i = 54;
