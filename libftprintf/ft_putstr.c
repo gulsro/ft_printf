@@ -12,8 +12,8 @@
 
 int ft_putstr(char *s)
 {
-    size_t  len;
+	size_t	len;
 
-    len = ft_strlen(s);
-    return(write(1, s, len));
+	len = ft_strlen(s);
+	return(write(1, s, len));
 }
