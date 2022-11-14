@@ -1,6 +1,18 @@
 #include <unistd.h>
 #include <stdio.h>
 
+size_t  ft_strlen(const char *s)
+{
+        size_t  i;
+
+        i = 0;
+        while (s[i] != '\0')
+        {
+                i++;
+        }
+        return (i);
+}
+
 int    ft_putchar(char c)
 {
     return (write(1, &c, 1));
@@ -29,6 +41,15 @@ int     ft_putnbr(int i)
 	return (len);
 }
 
+int	ft_putstr_fd(char *s)
+{	
+	size_t  len;
+
+	len = ft_strlen(s);
+	return (write(1, s, len));
+}
+
+int puthexa_low(int )
 int main()
 {
 	int i = 54;

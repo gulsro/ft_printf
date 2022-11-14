@@ -15,6 +15,18 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+size_t  ft_strlen(const char *s)
+{
+        size_t  i;
+
+        i = 0;
+        while (s[i] != '\0')
+        {
+                i++;
+        }
+        return (i);
+}
+
 int    ft_putchar(char c)
 {
     return(write(1, &c, 1));
@@ -43,12 +55,36 @@ int     ft_putnbr(int i)
         return (len);
 }
 
+int	ft_putstr(char *s)
+{
+	size_t  len;
+
+	len = ft_strlen(s);
+	return(write(1, s, len));
+}
+
 static int	convert_format(int sp, va_list *arg) //NOT PASS BY VALUE :D:D
 {	
 	if (sp == 'c')
 			return(ft_putchar(va_arg(*arg, int)));
 	if (sp == 'd')
 			return(ft_putnbr(va_arg(*arg, int)));
+	if (sp == 'i')
+			return(ft_putnbr(va_arg(*arg, int)));
+	if (sp == 's')
+			return(ft_putstr(va_arg(*arg, char*)));
+	if (sp == 'p')
+			return(0);
+        if (sp == 'u')
+                        return(0);
+        if (sp == 'x')
+                        return(0);
+        if (sp == 'X')
+                        return(0);
+        if (sp == '%')
+                        return(ft_putchar('%'));
+
+
 }
 
 int	ft_printf(const char *fstr, ...)
@@ -56,7 +92,6 @@ int	ft_printf(const char *fstr, ...)
 	va_list	arg;
 	int value;
 	int	i;
-//	int	len;
 
 	value = 0;	
 	i = 0;
@@ -79,6 +114,7 @@ int	ft_printf(const char *fstr, ...)
 int main()
 {	
 	int a = 54;
-	ft_printf("dfagg_%c_gli_%c_", 'm', 'x');
+//	ft_printf("dfagg_%c%c_gli_%c_%d", 'm', 'x', 't', a);
+	ft_printf("%s%%00", "gliler");
 //	printf("\n%c", 'm');
 }
