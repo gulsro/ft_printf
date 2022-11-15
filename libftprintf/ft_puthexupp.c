@@ -10,12 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
 int	ft_puthexupp(unsigned long i)
 {
 	int len;
-
+	
+	len = 0;
 	if (i > 15)
-	len +=  ft_puthexupp(i / 16);
+		len +=  ft_puthexupp(i / 16);
 	i = i % 16;
 	if (i < 10)
 		i += 48;

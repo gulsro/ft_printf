@@ -10,10 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
 int	ft_puthexlow(unsigned long i)
 {
 	int len;
 
+	len = 0;
+	if (i < 0)
+		i *= -1;
 	if (i > 15)
 	len +=  ft_puthexlow(i / 16);
 	i = i % 16;

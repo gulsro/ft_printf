@@ -10,10 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
 int ft_putstr(char *s)
 {
 	size_t	len;
-
+	if (!s)
+		return(write(1, "(null)", 6));
 	len = ft_strlen(s);
 	return(write(1, s, len));
 }
