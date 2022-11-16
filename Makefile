@@ -15,8 +15,6 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -I "." 
 
 OBJ = $(SRC:.c=.o)
-#OBJ :
-#	$(CC) $(CFLAGS) -c $(SRC)
 
 all : $(NAME)
 
