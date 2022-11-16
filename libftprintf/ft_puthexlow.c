@@ -6,13 +6,13 @@
 /*   By: gozturk <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 17:12:04 by gozturk       #+#    #+#                 */
-/*   Updated: 2022/11/14 17:12:16 by gozturk       ########   odam.nl         */
+/*   Updated: 2022/11/16 14:42:20 by gozturk       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthexlow(unsigned long i)
+int	ft_puthexlow(unsigned int i)
 {
 	int	len;
 

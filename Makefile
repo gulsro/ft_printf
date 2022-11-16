@@ -6,6 +6,7 @@ SRC = ./libftprintf/ft_putchar.c \
 	./libftprintf/ft_putstr.c \
 	./libftprintf/ft_puthexlow.c \
 	./libftprintf/ft_puthexupp.c \
+	./libftprintf/ft_putaddr.c \
 	./libftprintf/ft_putunsigned.c \
 	ft_printf.c
 

@@ -6,7 +6,7 @@
 /*   By: gozturk <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 17:11:02 by gozturk       #+#    #+#                 */
-/*   Updated: 2022/11/14 17:11:12 by gozturk       ########   odam.nl         */
+/*   Updated: 2022/11/16 14:22:14 by gozturk       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_putnbr(int i)
 {
 	long int	n;
-	int	len;
+	int			len;
 
 	len = 0;
 	n = i;
@@ -27,7 +27,7 @@ int	ft_putnbr(int i)
 	}
 	if (n > 9)
 	{
-		len += ft_putnbr(n/10);
+		len += ft_putnbr(n / 10);
 	}
 	n = n % 10;
 	n = n + '0';

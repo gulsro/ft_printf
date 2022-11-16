@@ -6,7 +6,7 @@
 /*   By: gozturk <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 17:10:38 by gozturk       #+#    #+#                 */
-/*   Updated: 2022/11/14 17:10:48 by gozturk       ########   odam.nl         */
+/*   Updated: 2022/11/16 14:45:15 by gozturk       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_putchar(char c)
 {
-	return(write(1, &c, 1));
+	return (write(1, &c, 1));
 }
