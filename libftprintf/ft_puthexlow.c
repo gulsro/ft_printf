@@ -14,15 +14,15 @@
 
 int	ft_puthexlow(unsigned long i)
 {
-        int len;
+	int	len;
 
-        len = 0;
-        if (i > 15)
-                len +=  ft_puthexlow(i / 16);
-        i = i % 16;
-        if (i < 10)
-                i += 48;
-        else
-                i += 'a' - 10;
-        return (len + write(1, &i, 1));
+	len = 0;
+	if (i > 15)
+		len += ft_puthexlow(i / 16);
+	i = i % 16;
+	if (i < 10)
+		i += 48;
+	else
+		i += 'a' - 10;
+	return (len + write(1, &i, 1));
 }
